@@ -141,7 +141,7 @@ One:
 ```js
 var a = 1
 function add(b) {
-  b = b + 1
+  return b = b + 1
 }
 console.log(a) // 1
 a = add(a)
