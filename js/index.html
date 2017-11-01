@@ -1,0 +1,64 @@
+<ul class="journeys"></ul>
+<h2>Total distance: <output data-total></output> miles</h2>
+<form id="add">
+	<label>Start: <input type="text" name="start" required></label><br>
+	<label>End: <input type="text" name="end" required></label><br>
+	<label>Distance: <input type="number" name="distance" min="0" step="1" required></label><br>
+	<input type="submit" value="Add Journey">
+</form>
+
+<script>
+	(function () {
+		var output = document.querySelector('[data-total]');
+		var listOfJourneys = document.querySelector('.journeys');
+		var journeyForm = document.forms.add;
+		var journeys = [
+			{
+				start: 'Brighton',
+				end: 'Newick',
+				distance: 4
+			}
+		];
+
+		journeyForm.addEventListener('submit', addNewJourney);
+		journeys.forEach(addJourneyToList);
+		calculate();
+
+		function addJourneyToList(journey) {
+			var list = document.createElement('li')
+			list.textContent = journey.start + ' -> ' + journey.end + ': ' + journey.distance + ' miles';
+			listOfJourneys.appendChild(list)
+		}
+
+		function addNewJourney(event) {
+			var form = event.target;
+			var journey = {
+				start: form.start.value,
+				end: form.end.value,
+				distance: Number(form.distance.value)
+			}
+
+			journeys.push(journey);
+			addJourneyToList(journey);
+			calculate();
+			form.reset();
+
+			event.preventDefault();
+		}
+
+		function calculate() {
+			output.textContent = journeys.reduce(function(current, journey) {
+				return current + journey.distance
+			}, 0);
+		}
+
+	})()
+
+</script>
+
+<style>
+	label,
+	input {
+		display: block;
+	}
+</style>
