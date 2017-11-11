@@ -1,8 +1,8 @@
 # More JS
 
-## Imperative vs. Declaritive
+## Imperative vs. Declarative
 
-Last time we finished the session by making a distance calculator in vanilla JavaScript. We found that it was pretty easy to repeat ourselves. For example, when doing the initial render of the list, we wrote code to create a `li` element, fill it with content and add it to the list. We also wrote code to tot up the distances. The problem came when we added a form to let a user add another trip. All that code was needed again for this feature.
+In the last session we finished by making a distance calculator in vanilla JavaScript. We found that it was pretty easy to repeat ourselves. For example, when doing the initial render of the list, we wrote code to create a `li` element, fill it with content and add it to the list. We also wrote code to tot up the distances. The problem came when we added a form to let a user add another trip. All that code was needed again for this feature.
 
 For the `li` appending feature, we wrote a helper function that added the element to the `ul`. As each individual route didn't need to know about the previous data, we could do that.
 
@@ -37,7 +37,7 @@ var b = 'trys'
 !!b // This is the boolean representation of 'b'. In this case, !!b === true
 ```
 
-### `||`
+### ||
 
 ```javascript
 var c = d || 'default'
@@ -54,7 +54,7 @@ if (d) {
 
 This is great for falling back to defaults and is regularly used in functions for default arguments.
 
-### `&&`
+### &&
 
 ```javascript
 var a = 0
