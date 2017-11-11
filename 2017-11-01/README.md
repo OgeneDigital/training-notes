@@ -46,7 +46,7 @@ b = b.toUpperCase()
 console.log(b) // 'TRYS'
 ```
 
-Why is this useful? Primitive types are consistent, once they're assigned, you have to be explicit to change them. This becomes more useful when we start passing values around a program.
+Why is this useful? Mutable values are consistent, once they're assigned, you have to be explicit to change them. This becomes more useful when we start passing values around a program.
 
 ## Objects
 The only non-primitive, mutable data type is an object. It is a collection of data.
