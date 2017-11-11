@@ -84,8 +84,46 @@ var a = b ? c : d;
 // Imagine:
 var a
 if (b) {
-	a = c
+  a = c
 } else {
-	a = d
+  a = d
 }
 ```
+
+
+## A module/singleton pattern
+
+```javascript
+var Namespace = (function () {
+  "use strict";
+  return {
+    Initialise: function () {
+      Namespace.Menus();
+    },
+
+    Menus: function () {
+      // Do menu things
+    }
+
+  };
+}());
+
+$(Namespace.Initialise());
+```
+
+Sidenote: `$(fn)` is equivalent to `$(document).ready(fn)`.
+
+[You might not need jQuery...](http://youmightnotneedjquery.com/)
+
+```javascript
+(function(fn) {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+})(Namespace.Initialise)
+```
+
+## Array methods
+
