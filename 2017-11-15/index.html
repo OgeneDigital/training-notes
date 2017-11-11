@@ -1,0 +1,48 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+	<h2>Total: {{ total }} miles</h2>
+	<ul>
+		<li v-for="route in routes">
+			{{ route.start }} -> {{ route.end }} = {{ route.distance }}m
+		</li>
+	</ul>
+	<form @submit.prevent="addRoute" ref="addRouteForm">
+		<label>Start: <input type="text" v-model="route.start" required></label><br>
+		<label>End: <input type="text" v-model="route.end" required></label><br>
+		<label>Distance: <input type="number" v-model="route.distance" required></label><br>
+		<input type="submit" value="Add Route" />
+	</form>
+</div>
+
+<script>
+const initialRoute = function() {
+	return {
+		start: '',
+		end: '',
+		distance: null
+	}
+}
+const vm = new Vue({
+	data: {
+		routes: [{
+			start: 'Newick',
+			end: 'Brighton',
+			distance: 3
+		}],
+		route: initialRoute()
+	},
+
+	computed: {
+		total () {
+			return this.routes.reduce((acc, route) => acc + Number(route.distance), 0)
+		}
+	},
+
+	methods: {
+		addRoute () {
+			this.routes.push(this.route)
+			this.route = initialRoute()
+		}
+	}
+}).$mount('#app')
+</script>
