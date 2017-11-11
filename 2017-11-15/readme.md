@@ -232,6 +232,12 @@ Also, don't view this a traditional loop, for longer arrays, it will run items t
 
 ## Task: wrangle some data.
 
-Take [this]() FIFA World Cup data and perform the following operations:
+Take [this FIFA World Cup data](https://raw.githubusercontent.com/trys/training-notes/master/2017-11-15/data.json) and perform the following operations:
 
 1. Return the item that corresponds to France's first win
+2. Return the array index of the 1970 World Cup final
+3. Return a new array of winner team names
+4. Count up the total number of goals
+5. Return all items where the host has won the World Cup
+6. Sort the items based on the total goals scored
+7. (Stretch goal) Return a new array of teams and their total number of wins, in descending order
