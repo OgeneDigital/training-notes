@@ -127,3 +127,111 @@ Sidenote: `$(fn)` is equivalent to `$(document).ready(fn)`.
 
 ## Array methods
 
+```javascript
+var people = [{
+	name: 'Jen',
+	age: 32
+}, {
+	name: 'Keith',
+	age: 48
+}, {
+	name: 'Sarah',
+	age: 22
+}]
+```
+
+### find
+
+Find the first item in the array that returns true
+
+```javascript
+// First person whose name starts with a 'K'
+var a = people.find(function(person) {
+    if (person.name.indexOf('K') === 0) {
+        return true
+    } else {
+        return false
+    }
+})
+
+// This can be refactored down
+var a = people.find(function(person) {
+    if (person.name.indexOf('K') === 0) {
+        return true
+    }
+})
+
+// And some more
+var a = people.find(function(person) {
+    return person.name.indexOf('K') === 0)
+})
+
+// In ES2015, we can get even shorter
+var a = people.find(person => person.name.indexOf('K') === 0)
+```
+
+### findIndex
+
+Same as `find`, but it returns the index that matches
+
+```javascript
+var b = people.findIndex(function(person) {
+    return person.age === 22
+})
+console.log(people[b]) // { name: 'Sarah', age: 22 }
+```
+
+### filter
+
+Create a new array with items that return true
+
+```javascript
+var c = people.filter(function(person) {
+    return person.age > 25
+})
+console.log(c) // [{ name: 'Jen', age: 32 }, { name: 'Keith', age: 48 }]
+```
+
+### map
+
+Create a new array with a subset of the original array (made from what you return)
+
+```javascript
+var d = people.map(function(person) {
+    return person.age
+})
+console.log(d) // [32, 48, 22]
+```
+
+### reduce
+
+Accumulate through an array. The first argument is the reducer function. The second argument is the starting value (in this case: 0). In the reducer function, there are two arguments, the current value of the accumalation, and the current item in the array. You return the new value of the accumalation.
+
+```javascript
+var e = people.reduce(function(current, person) {
+    return current + person.age
+}, 0)
+console.log(e) // 102
+```
+
+### sort
+
+In the sorting function, you're provided items `a` and `b`. If `a` is less than `b`, you return -1, if `a` is greater than `b`, you return 1, and if they are equal, you return 0. A shorthand can be used:
+
+```javascript
+var f = people.sort(function(a, b) {
+    return a.age - b.age
+}, 0)
+// Items in order of Sarah, Jen, Keith
+```
+
+Remember with sorting, it's default is to compare strings, not numbers. The default behavior of 'sort' on a single-dimensional array will gets multiples above 10 in the 'wrong' order.	`// [1, 10, 3, 35]`
+
+Also, don't view this a traditional loop, for longer arrays, it will run items through multiple times.
+
+
+## Task: wrangle some data.
+
+Take [this]() FIFA World Cup data and perform the following operations:
+
+1. Return the item that corresponds to France's first win
