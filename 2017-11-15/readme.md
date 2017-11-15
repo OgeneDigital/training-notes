@@ -127,6 +127,8 @@ Sidenote: `$(fn)` is equivalent to `$(document).ready(fn)`.
 
 ## Array methods
 
+Push/pull/unshift/shift
+
 ```javascript
 var people = [{
 	name: 'Jen',
