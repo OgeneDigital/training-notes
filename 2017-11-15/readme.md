@@ -8,7 +8,7 @@ For the `li` appending feature, we wrote a helper function that added the elemen
 
 For the total distance feature, we needed all the data to make the calculation so we couldn't use an appending helper function. We needed to re-render the total each time, hence we wrote a 'render' function that destroyed the old data and put in new data.
 
-For page load, we could run the helper function for each of the inital routes and call the render funciton once. Then for each form submittion, we called the helper function once and the render function once. We moved much of the duplication into functions (which is great), but we still have duplication for the helper function calls.
+For page load, we could run the helper function for each of the inital routes and call the render function once. Then for each form submittion, we called the helper function once and the render function once. We moved much of the duplication into functions (which is great), but we still have duplication for the helper function calls.
 
 Duplication is an opportunity for errors to creep in, especially as a program expands. Say another developer came along and added a feature in a few months time that needed to add routes from a real-time database. If they didn't realise they had to call two seperate functions to force a re-render, their could be problems.
 
@@ -108,7 +108,7 @@ var Namespace = (function () {
   };
 }());
 
-$(Namespace.Initialise());
+$(Namespace.Initialise);
 ```
 
 Sidenote: `$(fn)` is equivalent to `$(document).ready(fn)`.
