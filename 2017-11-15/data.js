@@ -1,4 +1,4 @@
-[
+var data = [
   {
     "year": 1930,
     "host": "Uruguay",

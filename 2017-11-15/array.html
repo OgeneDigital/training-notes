@@ -1,0 +1,62 @@
+<script src="data.js"></script>
+<script>
+	// console.log(data)
+
+	var a = data.find(function(tournament) {
+		return tournament.winner === 'France'
+	})
+	// console.log(a)
+
+	var b = data.findIndex(function(tournament) {
+		return tournament.year === 1970;
+	})
+	// console.log(b)
+
+	var c = data.map(function(tournament) {
+		return tournament.winner
+	})
+	// console.log(c)
+
+	var d = data.reduce(function(current, tournament) {
+		return current + tournament.winnerScore + tournament.runnerUpScore
+	}, 0)
+
+	// console.log(d)
+
+	var e = data.filter(function(tournament) {
+		return tournament.host === tournament.winner
+	})
+	// console.log(e)
+
+	var f = data.sort(function(a, b) {
+		var aScore = a.winnerScore + a.runnerUpScore;
+		var bScore = b.winnerScore + b.runnerUpScore;
+		return aScore - bScore
+	})
+	// console.table(f)
+	var g = data.reduce(function(current, tournament) {
+		// Look to see if this team has won before
+		var winnerIndex = current.findIndex(function(winner) {
+			return winner.name === tournament.winner
+		})
+
+		// If they haven't, add them to the current array and update the winnerIndex
+		if (winnerIndex === -1) {
+			current.push({
+				name: tournament.winner,
+				total: 0
+			})
+			winnerIndex = current.length - 1
+		}
+
+		// Increase their total
+		current[winnerIndex].total += 1
+		return current
+	}, []).sort(function(a, b) {
+		// Sort by total
+		return b.total - a.total
+	})
+	console.table(g)
+
+
+</script>

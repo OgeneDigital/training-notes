@@ -234,7 +234,7 @@ Also, don't view this a traditional loop, for longer arrays, it will run items t
 
 ## Task: wrangle some data.
 
-Take [this FIFA World Cup data](https://raw.githubusercontent.com/trys/training-notes/master/2017-11-15/data.json) and perform the following operations:
+Take [this FIFA World Cup data](https://raw.githubusercontent.com/trys/training-notes/master/2017-11-15/data.js) and perform the following operations:
 
 1. Return the item that corresponds to France's first win
 2. Return the array index of the 1970 World Cup final

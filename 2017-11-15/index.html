@@ -12,6 +12,11 @@
 		<label>Distance: <input type="number" v-model="route.distance" required></label><br>
 		<input type="submit" value="Add Route" />
 	</form>
+	<ul>
+		<li v-for="route in routes">
+			{{ route.start }} -> {{ route.end }} = {{ route.distance }}m
+		</li>
+	</ul>
 </div>
 
 <script>
