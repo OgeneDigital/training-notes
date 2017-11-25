@@ -6,7 +6,28 @@ The DOM (Document Object Model) is the interface between HTML and JS. It represe
 console.log(document)
 ```
 
-It acts very much like an object, so we can use dot-notation to access children. Therefore, accessing the `<body>` element is a case of writing `document.body`.
+```markup
+<html>
+	<body>
+		<p>Hi there</p>
+	</body>
+</html>
+```
+
+```javascript
+var document = {
+	body: {
+		children: [
+			{
+				nodeName: 'P',
+				innerText: 'Hi there'
+			}
+		]
+	}
+}
+```
+
+It acts very much like an object, we can even use dot-notation to access (some) children. Accessing the `<body>` element is a case of writing `document.body`.
 
 ## childNodes
 
@@ -16,7 +37,7 @@ Each item on the tree is a node. There are several different types of node that 
 - Text
 - Comment
 
-Using the following HTML, we can see how JS interprets this markup:
+Using the following HTML, we can see how JS interprets markup:
 
 ```markup
 <html>
@@ -42,7 +63,7 @@ The answer is 5:
 4. Element: our paragraph
 5. Text: newline and 'Hi there! and then newline'
 
-This to show, you can't rely on `childNodes` returning just the HTML, or just the text. When we indent our code, we're introducing this extra content. It's not a problem for displaying the HTML, but it does need to be considered when we're reading from the DOM.
+This shows you can't rely on `childNodes` returning just the HTML, or just the text. When we indent our code, we're introducing this extra 'content'. It's not a problem for actually displaying the HTML in the page, but it does need to be considered when we're reading from the DOM.
 
 ## Children
 
@@ -50,15 +71,15 @@ This to show, you can't rely on `childNodes` returning just the HTML, or just th
 console.log(document.body.children)
 ```
 
-Let's compare the difference using `.children`. We get a HTMLCollection with one element, the paragraph. This is more useful for only dealing with HTML.
+Let's compare the difference using `.children` on the same markup. We get a HTMLCollection with one element, the paragraph. This is more useful for only dealing with HTML.
 
 ## Iteration - HTMLCollection vs. NodeList
 
-In our first example, we were returned a NodeList, the the second we got a HTMLCollection. If we console.dir them, we can see the prototyped methods & properties available to us. For HTMLCollection, the only useful property is length. With this, we can use a classic `for` loop to access the elements.
+In our first example, we were returned a NodeList, in the second we got a HTMLCollection. If we console.dir them, we can see the prototyped methods & properties available to us. For HTMLCollection, the only useful property is length. With this, we can use a classic `for` loop to access the elements.
 
 In a NodeList, we have access to forEach, support is good but it needs a [polyfill](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill) for IE.
 
-A nice alternative that works for `HTMLCollection`s and `NodeList`s is:
+A nice loop that works for both is:
 
 ```javascript
 [].forEach.call(document.body.children, function(el) {
@@ -112,7 +133,7 @@ node.parentNode.removeChild(node)
 
 ## innerHTML vs. innerText
 
-`innerText` will return the text of the node and it's children. `innerHTML` returns the text and HTML of the node and it's children. 
+`innerText` will return the text of the node and it's children. `innerHTML` returns the text and HTML of the node and it's children.
 
 ```markup
 <html>
@@ -129,13 +150,15 @@ document.body.children[0].innerHTML
 // "123 <b>456</b>"
 ```
 
+Be careful when adding user generated content to the DOM. Always use escape or use `innerText`! If you use `innerHTML`, a 'hacker' could add a script tag to their content and it would run on your page. This is called Cross-site scripting or XSS.
+
 ## getAttribute / setAttribute
 
-To read & write attributes to a node, we can use `getAttribute` and `setAttribute`. Note that they will always return strings, so remember to cast the types when reading values back if you need to work with anything other than a string.
+To read & write attributes to a node, we can use `getAttribute` and `setAttribute`. Note that they will always return a string, so remember to cast the type when reading values back if you need to work with anything other than a string.
 
 ```javascript
-document.body.setAttribute('a-new-attribute', '123')
-document.body.getAttribute('a-new-attribute') // 123
+document.body.setAttribute('a-new-attribute', 123)
+document.body.getAttribute('a-new-attribute') // '123'
 // <body a-new-attribute="123"></body>
 ```
 
@@ -161,7 +184,7 @@ document.body.dataset['123'] = 'abc'
 
 ## style
 
-`element.style` returns all the current CSS applied to an element. It's object-like so you can write `element.style.color` to be more specific. Hyphenated properties are converted to capelCase: `element.style.marginLeft`. These a getters and setters.
+`element.style` returns all the current CSS applied to an element. It's object-like so you can write `element.style.color` to be more specific. Hyphenated properties are converted to camelCase: `element.style.marginLeft`. These a getters and setters.
 
 ## nodeName
 
@@ -186,6 +209,19 @@ var ctaButton = document.querySelector('.cta-button')
 ctaButton.innerText = 'Read more'
 ctaButton.style.color = '#123456'
 ```
+
+## Event delegation & bubbling
+
+Bubbling is the process of an event working it's way up the DOM tree. For example, when you click on a `<button>`, you're also clicking on all the parent elements, right up to the document. This can seem like a strange behaviour at first, but it's really helpful. Imagine we want to alert the user every time they click on the text in the following markup:
+
+```markup
+<p>Abc, easy as <strong>123</strong></p>
+```
+
+Without event bubbling, we'd need to add an event on the `p` AND `strong`, as both could be clicked on. This would be a pain to keep track of. So bubbling means we only need to put the event listener on the `p`, and when the `strong` is clicked, the `p` event will be triggered.
+
+We can use this to our advantage to group events and avoid putting eventListeners on multiple elements.
+
 
 ## Task - TODO list
 
@@ -213,3 +249,7 @@ The classic task. Using the following markup, hook up the JS to make a todo list
 	</ul>
 </div>
 ```
+
+1. When the form submits, add an item to the 'Still to do' list.
+2. When the user click on the button, move the todo between the 'Still to do' and 'Completed' list.
+
