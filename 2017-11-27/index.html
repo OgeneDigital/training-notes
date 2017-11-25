@@ -1,0 +1,50 @@
+<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+<style>.todo,body{padding:40px}body{background:#2962FF;margin:0;font:18px/1.5 'Barlow Condensed',sans-serif}.todo{width:100%;max-width:400px;margin:0 auto;background:#E3F2FD;border:10px solid #0D47A1}.todo input,.todo li button{background:#FFF;font:inherit}.todo form:after{content:'';display:table;clear:both}.todo [type=text]{width:calc(100% - 100px);float:left}.todo [type=submit]{width:80px;float:right}.todo input{padding:10px;display:inline-block;border:2px solid #DDD}.todo ul{padding:0}.todo li{padding:5px 0;list-style:none;margin:0}.todo li button{border:1px solid #DDD}.todo li+li{border-top:1px solid rgba(0,0,0,.2)}</style>
+<div class="todo">
+	<form id="addTodo">
+		<input name="todo" type="text" placeholder="What would you like to do?" required>
+		<input type="submit" value="+" />
+	</form>
+
+	<h2>Still to do</h2>
+	<ul class="todo__incomplete">
+		<li><button>&times;</button> Task 1</li>
+	</ul>
+
+	<h2>Completed</h2>
+	<ul class="todo__completed">
+		
+	</ul>
+</div>
+
+<script>
+	(function () {
+		var todo = document.querySelector('.todo');
+		var incomplete = todo.querySelector('.todo__incomplete')
+		var completed = document.querySelector('.todo__completed');
+
+		todo.addEventListener('click', function(event) {
+			if (event.target.nodeName !== 'BUTTON') return;
+			var todoItem = event.target.parentNode;
+
+			if (todoItem.parentNode === incomplete) {
+				incomplete.removeChild(todoItem)
+				completed.appendChild(todoItem)
+			} else {
+				completed.removeChild(todoItem)
+				incomplete.appendChild(todoItem)
+			}
+		});
+
+		document.forms.addTodo.addEventListener('submit', function(event) {
+			event.preventDefault();
+			var newTodo = document.createElement('li')
+			var newTodoButton = document.createElement('button')
+			newTodoButton.innerHTML = '&times;';
+			newTodo.appendChild(newTodoButton);
+			newTodo.appendChild(document.createTextNode(' ' + event.target.todo.value));
+			incomplete.appendChild(newTodo);
+			event.target.reset();
+		});
+	})();
+</script>
