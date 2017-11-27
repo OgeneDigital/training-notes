@@ -8,22 +8,22 @@ console.log(document)
 
 ```markup
 <html>
-	<body>
-		<p>Hi there</p>
-	</body>
+    <body>
+        <p>Hi there</p>
+    </body>
 </html>
 ```
 
 ```javascript
 var document = {
-	body: {
-		children: [
-			{
-				nodeName: 'P',
-				innerText: 'Hi there'
-			}
-		]
-	}
+    body: {
+        children: [
+            {
+                nodeName: 'P',
+                innerText: 'Hi there'
+            }
+        ]
+    }
 }
 ```
 
@@ -41,11 +41,11 @@ Using the following HTML, we can see how JS interprets markup:
 
 ```markup
 <html>
-	<body>
-		<!-- A hidden comment -->
-		<p>123</p>
-		Hi there!
-	</body>
+    <body>
+        <!-- A hidden comment -->
+        <p>123</p>
+        Hi there!
+    </body>
 </html>
 ```
 
@@ -83,7 +83,7 @@ A nice loop that works for both is:
 
 ```javascript
 [].forEach.call(document.body.children, function(el) {
-	console.log(el)
+    console.log(el)
 })
 ```
 
@@ -99,7 +99,7 @@ For a NodeList or HTMLCollection, we need to loop through the elements and attac
 
 ```javascript
 [].forEach.call(document.body.children, function(el) {
-	el.addEventListener('click', function() {});
+    el.addEventListener('click', function() {});
 })
 ```
 
@@ -137,9 +137,9 @@ node.parentNode.removeChild(node)
 
 ```markup
 <html>
-	<body>
-		<p>123 <b>456</b></p>
-	</body>
+    <body>
+        <p>123 <b>456</b></p>
+    </body>
 </html>
 ```
 
@@ -233,20 +233,20 @@ The classic task. Using the following markup, hook up the JS to make a todo list
 
 
 <div class="todo">
-	<form id="addTodo">
-		<input name="todo" type="text" placeholder="What would you like to do?" required>
-		<input type="submit" value="+" />
-	</form>
+    <form id="addTodo">
+        <input name="todo" type="text" placeholder="What would you like to do?" required>
+        <input type="submit" value="+" />
+    </form>
 
-	<h2>Still to do</h2>
-	<ul class="todo__incomplete">
-		<li><button>&times;</button> Task 1</li>
-	</ul>
+    <h2>Still to do</h2>
+    <ul class="todo__incomplete">
+        <li><button>&times;</button> Task 1</li>
+    </ul>
 
-	<h2>Completed</h2>
-	<ul class="todo__completed">
-		
-	</ul>
+    <h2>Completed</h2>
+    <ul class="todo__completed">
+        
+    </ul>
 </div>
 ```
 
