@@ -1,0 +1,59 @@
+<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+<style>.todo,body{padding:40px}body{background:#2962FF;margin:0;font:18px/1.5 'Barlow Condensed',sans-serif}.todo{width:100%;max-width:400px;margin:0 auto;background:#E3F2FD;border:10px solid #0D47A1}.todo input,.todo li button{background:#FFF;font:inherit}.todo form:after{content:'';display:table;clear:both}.todo [type=text]{width:calc(100% - 100px);float:left}.todo [type=submit]{width:80px;float:right}.todo input{padding:10px;display:inline-block;border:2px solid #DDD}.todo ul{padding:0}.todo li{padding:5px 0;list-style:none;margin:0}.todo li button{border:1px solid #DDD}.todo li+li{border-top:1px solid rgba(0,0,0,.2)}</style>
+
+
+<div class="todo">
+    <form id="addTodo">
+        <input name="todo" type="text" placeholder="What would you like to do?" required>
+        <input type="submit" value="+" />
+    </form>
+
+    <h2>Still to do</h2>
+    <ul class="todo__incomplete">
+        <li><button>&times;</button> Task 1</li>
+    </ul>
+
+    <h2>Completed</h2>
+    <ul class="todo__completed">
+        
+    </ul>
+</div>
+
+<script>
+
+(function() {
+
+	var parent = document.querySelector('.todo');
+	var form = parent.querySelector('#addTodo');
+	var incomplete = parent.querySelector('.todo__incomplete');
+	var completed = parent.querySelector('.todo__completed');
+
+	form.addEventListener('submit', function(event) {
+		event.preventDefault();
+		var todoName = event.target.todo.value;
+		var todo = document.createElement('li');
+		
+		var todoButton = document.createElement('button');
+		todoButton.innerHTML = '&times;';
+
+		todo.appendChild(todoButton)
+		todo.appendChild(document.createTextNode(' ' + todoName));
+		incomplete.appendChild(todo);
+	});
+
+	parent.addEventListener('click', function(event) {
+		if (event.target.nodeName !== 'BUTTON') return;
+		var todo = event.target.parentNode;
+		
+		if (todo.parentNode === incomplete) {
+			incomplete.removeChild(todo)
+			completed.appendChild(todo)
+		} else {
+			completed.removeChild(todo)
+			incomplete.appendChild(todo)
+		}
+	});
+
+})();
+
+</script>
