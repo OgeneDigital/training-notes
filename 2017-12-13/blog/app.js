@@ -7,6 +7,7 @@ app.use(express.static('static'))
 app.get('/', (req, res) => {
   res.render('index', getPosts(1))
 })
+
 app.get('/page/:paged', (req, res) => {
   res.render('index', getPosts(Number(req.params.paged)))
 })

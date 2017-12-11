@@ -122,3 +122,21 @@ We'll write one example in Vue for a bit of fun, then maybe run through a more t
 2. Add the page name to `window.location.hash` after each button click
 3. Read the `window.location.hash` on load and start the posts from the correct position.
 
+### Server example
+
+1. `cd` into the `/2017-12-13/blog` directory
+2. Run `npm i` to install the local dependancies
+3. Run `npm start` to kick it off
+4. Visit [http://localhost:3000](http://localhost:3000)
+
+1. In `/static/main.js`, implement a 'load-more' solution
+2. Listen for the `.load-more` button click
+3. `fetch()` the button href URL
+4. Append the new posts the page
+5. Add the new load more button to the page
+
+### Stretch goals
+
+1. Use Push State to update the page URL
+2. Filter the response
+3. Investigate the Intersection Observer API to trigger the load more on scroll
