@@ -53,7 +53,7 @@ fetch(url)
     })
 ```
 
-### Axios
+### Axios
 
 This is a [library](https://github.com/axios/axios) that wraps around fetch to give you a slightly nicer developer experience. In the above examples, you have to convert to JSON yourself, Axios handles that for you. It also works in Node.js and in the browser which makes it perfect for universal JS apps.
 
