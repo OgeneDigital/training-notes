@@ -1,0 +1,45 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <ul>
+    <li v-for="post in posts">
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.title }}</p>
+    </li>
+  </ul>
+  <button type="button" @click="loadMore">Load more</button>
+</div>
+
+<script>
+const vm = new Vue({
+  el: '#app',
+  
+  data: {
+    api: 'http://jsonplaceholder.typicode.com/posts?_limit=2&_start=',
+    posts: []
+  },
+
+  created () {
+    const start = (Number(window.location.hash.replace('#page', '')) || 0) * 2
+    this.loadPosts(start)
+  },
+
+  methods: {
+    loadMore() {
+      const lastPost = this.posts[this.posts.length - 1]
+      window.location.hash = '#page' + (lastPost.id / 2)
+      this.loadPosts(lastPost.id)
+    },
+
+    loadPosts(start) {
+      fetch(this.api + start)
+        .then(response => response.json())
+        .then(response => {
+          response.forEach(post => {
+            this.posts.push(post)
+          })
+        })
+    }
+  }
+})
+</script>

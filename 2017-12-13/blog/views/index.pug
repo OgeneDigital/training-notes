@@ -1,0 +1,14 @@
+html
+  head
+    title= title
+  body
+    h1= title
+    ul.posts
+      each post in posts
+        li
+          h3= post.title
+          p= post.body
+    if next
+      footer.loader
+        a(href="/page/" + next, class="load-more") Load more
+    script(src="/main.js")
