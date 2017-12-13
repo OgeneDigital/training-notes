@@ -1,4 +1,10 @@
-# AJAX
+# AJAX and polyfills
+
+## Polyfills
+
+[Polyfill.io](https://polyfill.io/v2/docs/)
+
+## AJAX
 
 AJAX stands for Asynchronous Javascript and XML. It's a way of requesting assets or sending data without reloading the page. Forms using GET and POST were previously the only way to handle data transfer. AJAX makes sites like Google Maps possible. 
 
