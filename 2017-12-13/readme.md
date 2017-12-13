@@ -130,7 +130,7 @@ We'll write one example in Vue for a bit of fun, then maybe run through a more t
 
 ### Server example
 
-1. `cd` into the `/2017-12-13/blog` directory
+1. Clone into the [pagination-example repository](https://github.com/trys/pagination-example)
 2. Run `npm i` to install the local dependancies
 3. Run `npm start` to kick it off
 4. Visit [http://localhost:3000](http://localhost:3000)
