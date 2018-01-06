@@ -48,7 +48,7 @@ If you have the video file and want more control than a YouTube embed, use the v
 - preload - should the browser load the video before the user hits play, costly for bandwidth but useful if you're definitely playing the video
 - poster - an image to be shown before the video starts or after it ends
 
-## Inside the video
+## Inside the video tag
 
 Like with all HTML elements, it fails gracefully. You can put content within the `<video></video>` tag and this will be displayed on browsers that don't support video. You can even put in `<track>` tags for subtitles.
 
@@ -63,6 +63,10 @@ The `<source>` tag is the most common element to put within a `<video>` element.
 ```
 
 In this example, `.webm` will be used in Chrome, Firefox and Edge. Safari and IE will fall back to `.mp4`.
+
+## Formats
+
+`.webm` is a neat new format (along with `.webp`) for tiny movies and images on the web. There are some online converters along with 'Handbrake' that'll convert from `.mp4` to `.webm`. Using the `<source>` tag with `.webm` allows users with new browsers to save bandwidth.
 
 ## Task - Video player
 
