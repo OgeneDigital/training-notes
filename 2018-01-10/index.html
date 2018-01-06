@@ -1,0 +1,67 @@
+<meta name="viewport" content="width=device-width">
+
+<style>
+
+	body {
+		padding: 30px;
+	}
+
+	.player {
+		max-width: 400px;
+		margin: 0 auto;
+	}
+
+	.player video {
+		width: 100%;
+	}
+
+</style>
+
+<div class="player">
+	<video>
+		<source src="video.webm" type="video/webm">
+		<source src="video.mp4" type="video/mp4">
+	</video>
+
+	<button type="button" class="player__play">Play/Pause</button>
+	<button type="button" class="player__full">Fullscreen</button>
+	<button type="button" class="player__mute">Mute</button>
+</div>
+
+<script>
+(function() {
+	const player = document.querySelector('.player');
+	if (!player) return;
+
+	const video = player.querySelector('video');
+	const play = player.querySelector('.player__play');
+	const fullscreen = player.querySelector('.player__full');
+	const mute = player.querySelector('.player__mute');
+	
+	play.addEventListener('click', function() {
+		const method = video.paused ? 'play' : 'pause'
+		video[method]()
+	});
+
+	mute.addEventListener('click', function() {
+		video.muted = !video.muted
+	});
+
+	fullscreen.addEventListener('click', function() {
+		if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+			if (video.requestFullscreen) {
+				video.requestFullscreen();
+			} else if (video.webkitRequestFullScreen) {
+				video.webkitRequestFullScreen();
+			}
+		} else {
+			if (document.cancelFullScreen) {
+				document.cancelFullScreen();
+			} else if (document.webkitCancelFullScreen) {
+				document.webkitCancelFullScreen();
+			}
+		}
+	});
+
+})();
+</script>
