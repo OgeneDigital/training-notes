@@ -1,5 +1,10 @@
 # Video
 
+## References: 
+
+[HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
+[Video Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+
 ## Responsive embeds
 
 Youtube and Vimeo embeds are the easiest way to get video onto the web. We can use the `padding-bottom` method to make videos responsive:
