@@ -2,13 +2,13 @@
 
 Features:
 
-Offline
-API-driven
-AJAX
-Lazy-loading
-Performant
-Maps?
-Responsive
+- Offline
+- API-driven
+- AJAX
+- Lazy-loading
+- Performant
+- Maps?
+- Responsive
 
 
 https://punkapi.com/
