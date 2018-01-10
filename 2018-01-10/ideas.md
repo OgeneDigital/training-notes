@@ -2,6 +2,8 @@
 
 Features:
 
+- Build processes
+- NPM workflow
 - Offline
 - API-driven
 - AJAX
@@ -9,6 +11,16 @@ Features:
 - Performant
 - Maps?
 - Responsive
+- Vue or framework
+- Slider
+- Modals
+- Time saving things
+- Auditting
+- Mobile menu
+- Off-canvas menus
+- Flexbox & Grid
+
+
 
 
 https://punkapi.com/
