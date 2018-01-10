@@ -68,6 +68,16 @@ In this example, `.webm` will be used in Chrome, Firefox and Edge. Safari and IE
 
 `.webm` is a neat new format (along with `.webp`) for tiny movies and images on the web. There are some online converters along with 'Handbrake' that'll convert from `.mp4` to `.webm`. Using the `<source>` tag with `.webm` allows users with new browsers to save bandwidth.
 
+## Object-fit
+
+`Object-fit` is like `background-size` for video/images. Most of the time, the aspect-ratio preservation on video/images is really useful. Occassionaly though, it's useful to set a fixed height and width. This leads to the media being stretched. This is where `object-fit` comes in.
+
+`object-fit: cover` sets the media to fill the longest edge.
+
+`object-fit: contain` sets the media to fill the shortest edge.
+
+There is also a `background-position` counterpart in `object-position`.
+
 ## Task - Video player
 
 We're going to make a basic video player with custom controls for play/pause, fullscreen and mute. You can't style the native video controls so this is a solution to a design problem.
