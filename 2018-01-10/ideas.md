@@ -1,7 +1,5 @@
 ## Features:
 
-Features:
-
 - Build processes
 - NPM workflow
 - Offline
@@ -19,9 +17,12 @@ Features:
 - Mobile menu
 - Off-canvas menus
 - Flexbox & Grid
+- LocalStorage
+- IndexedDB
 
+Photo mood board with collections and images within them. Served from Unsplash. Add notes to a collection/image. Store data on device for persistent sessions. Make it work offline. Build it in Vue.
 
-
+## APIs
 
 https://punkapi.com/
 
