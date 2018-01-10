@@ -2,8 +2,8 @@
 
 ## References: 
 
-[HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
-[Video Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+- [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) 
+- [Video Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
 
 ## Responsive embeds
 
