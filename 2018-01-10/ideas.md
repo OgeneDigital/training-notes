@@ -19,6 +19,9 @@
 - Flexbox & Grid
 - LocalStorage
 - IndexedDB
+– Responsive image techniques.
+– PushState style navigation.
+– Responsive units (rems, vh, vw, relative sizing).
 
 Photo mood board with collections and images within them. Served from Unsplash. Add notes to a collection/image. Store data on device for persistent sessions. Make it work offline. Build it in Vue.
 
