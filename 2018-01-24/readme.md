@@ -6,7 +6,8 @@ Before moving onto a bigger project, I thought it would be worth consolidating t
 - Methods & actions
 - Input types & attributes
 - CSS pseudo classes on inputs
-- Task: Newsletter signup form
+
+**Task:** Newsletter signup form  
 
 ## 2. JS - Variables
 - What is a variable
@@ -16,7 +17,8 @@ Before moving onto a bigger project, I thought it would be worth consolidating t
 - Global scope
 - IIFEs
 - Render function
-- Task: Milage calculator
+
+**Task:** Milage calculator  
 
 ## 3. JS - More JavaScript
 - Imperative vs. Declarative
@@ -25,7 +27,8 @@ Before moving onto a bigger project, I thought it would be worth consolidating t
 - Module/Singleton pattern
 - You might not need jQuery
 - Array methods: find, findIndex, filter, map, reduce & sort
-- Task: Wrangling array data
+
+**Task:** Wrangling array data  
 
 ## 4. JS - DOM
 - What is the DOM
@@ -37,7 +40,8 @@ Before moving onto a bigger project, I thought it would be worth consolidating t
 - getAttribute, classlist, dataset & style
 - Finding elements with querySelector & querySelectorAll
 - Event delegation and bubbling
-- Task: TODO List
+
+**Task:** TODO List  
 
 ## 5. JS - AJAX
 - Polyfill.io
@@ -47,7 +51,8 @@ Before moving onto a bigger project, I thought it would be worth consolidating t
 - Axios
 - Asynchronous gotchas
 - Streaming, when to not use AJAX
-- Task: Load more posts
+
+**Task:** Load more posts  
 
 ## 6. Video
 - Resonsive embedding
@@ -56,5 +61,10 @@ Before moving onto a bigger project, I thought it would be worth consolidating t
 - .webm & .webp
 - Object-fit
 - Fullscreen API
-- Task: Video player
+
+**Task:** Video player  
+
+## Today's task(s)
+
+I've created a bunch of small and smallish tasks to run through. Refer back to the previous session notes, there's nothing we haven't covered before. The tasks are in the training repository under: `/2018-01-24/index.html`. If you load up that file in Sublime/Chrome and check out the script tag.
 
