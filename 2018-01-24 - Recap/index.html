@@ -54,19 +54,50 @@
 			/* Functions
 			---------------------- */
 
+
+
+
+
+
+
+
 			// 1. Write a function that returns the word `Hi!`
+			function hello() {
+				return 'Hi!';
+			}
+			// console.log(hello());
 			
 			
 			// 2. Write a function that takes in two numbers, adds them together and returns the result.
+			function add(a, b) {
+				return a + b;
+			}
+			var result = add(1, 2);
+			console.log(result);
+			// console.log(add(1,2));
 
 
 			// 3. Write a function that takes in a number and returns `Low` if the number is smaller than 0 and `High` if it is greater than zero.
+			function numberBetween(n) {
+				if (n < 0) return 'Low';
+				else if (n > 0) return 'High'
+			 	else if (n === 0) return 'Mid';
+			}
+			// console.log(numberBetween(-1));
+			// console.log(numberBetween(1));
 
 
 			// 4. Extend the previous function to return `Mid` if the number is exactly 0.
+			// console.log(numberBetween(0));
 
 
 			// 5. Write a function that takes in a string, and creates/appends a new `li` element to the `ul.strings` with that string.
+			function addString(s) {
+				var li = document.createElement('li');
+				li.innerText = s;
+				document.querySelector('.strings').appendChild(li);
+			}
+			// addString('123');
 
 
 
