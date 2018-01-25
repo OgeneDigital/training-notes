@@ -55,12 +55,6 @@
 			---------------------- */
 
 
-
-
-
-
-
-
 			// 1. Write a function that returns the word `Hi!`
 			function hello() {
 				return 'Hi!';
@@ -72,8 +66,6 @@
 			function add(a, b) {
 				return a + b;
 			}
-			var result = add(1, 2);
-			console.log(result);
 			// console.log(add(1,2));
 
 
@@ -105,13 +97,19 @@
 			---------------------- */
 
 			// 1. Create an object with properties `a = 0` and `b = 1`. Then, assign the value `2` to the key `c`.
+			var obj = { a: 0, b: 1 };
+			// console.log(obj);
+			obj.c = 2;
+			// console.log(obj);
 
 
 			// 2. Create an array with the values `0, 1, 2`.
-
+			var arr = [0, 1, 2];
+			// console.log(arr);
 
 			// 3. Append `3` to the previous array.
-
+			arr.push(3);
+			// console.log(arr);
 
 			// 4. Create a new array with the following objects:
 
@@ -120,31 +118,74 @@
 			name = Patrick, age = 19
 			name = Denise, age = 28
 			*/
+			var people = [
+				{
+					name: 'Jo',
+					age: 24,
+				},
+				{
+					name: 'Patrick',
+					age: 19,
+				},
+				{
+					name: 'Denise',
+					age: 28
+				}
+			];
+			// console.log(people);
 
 			// 5. Sort the array into age order.
+			people.sort(function(a, b) {
+				return a.age - b.age;
+			});
+			// console.log(people);
 
 
 			// 6. Filter the array, leaving only those under the age of 25.
-
+			var youngPeople = people.filter(a => a.age < 25);
+			// console.log(youngPeople);
 
 			// 7. Extend the previous array to return a new array of just their ages.
+			var youngPeoplesAges = youngPeople.map(function(a) {
+				return a.age;
+			});
+			// console.log(youngPeoplesAges);
 
 
 			/* DOM
 			---------------------- */
 
 			// Using `.content`, perform the following actions:
+			var content = document.querySelector('.content');
 
 			// 1. Colour each link `#C96260` using JavaScript.
+			var links = content.getElementsByTagName('a');
+			[].forEach.call(links, function(el) {
+				el.style.color = '#C96260';
+			});
 
 
 			// 2. Set the opacity of the ID'd span to 0.2.
+			var span = content.querySelector('#anId');
+			span.style.opacity = 0.2;
 
 
 			// 3. When the button is clicked, add another paragraph to the content area. Use `new Date().toString()` for the content.
+			var button = document.querySelector('.what-time');
+			button.addEventListener('click', function() {
+				var p = document.createElement('p');
+				p.innerText = new Date().toString();
+				content.appendChild(p);
+			});
 
 
 			// 4. When any link is clicked, console.log the text inside the element.
+			[].forEach.call(links, function(el) {
+				el.addEventListener('click', function(event) {
+					event.preventDefault();
+					console.log(this.innerText);
+				});
+			});
 
 
 			/* Media
@@ -152,35 +193,73 @@
 
 			// All in JS:
 			// 1. Create an audio element and add it to `.audio-player`
-
+			var player = document.createElement('audio');
+			var playerContainer = document.querySelector('.audio-player');
+			playerContainer.appendChild(player);
 
 			// 2. Set the src to be: `song.mp3` (and add the controls attribute for testing)
+			player.src = 'song.mp3';
+			player.setAttribute('controls', true);
 
 
 			// 3. Create a play/pause button and hook up the events
+			var playButton = document.createElement('button');
+			playButton.textContent = 'Play/pause';
+			playerContainer.appendChild(playButton);
+			playButton.addEventListener('click', function() {
+				player[player.paused ? 'play' : 'pause']();
+			});
 			
 
 			// 4. Create a mute/unmute button and hook up the events
-			
+			var muteButton = document.createElement('button');
+			muteButton.textContent = 'Mute/unmute';
+			playerContainer.appendChild(muteButton);
+			muteButton.addEventListener('click', function() {
+				player.muted = !player.muted;
+			});
 
 			// 5. Create a input[type="range"] with the attribues: `min="0.5" max="2" step="0.1"`, that alters the playback rate of the audio element. The event 'input' will be helpful for this one.
+			var playbackRate = document.createElement('input');
+			playbackRate.setAttribute('type', 'range');
+			playbackRate.setAttribute('min', 0.5);
+			playbackRate.setAttribute('max', 2);
+			playbackRate.setAttribute('step', 0.1);
+			playerContainer.appendChild(playbackRate);
+			playbackRate.addEventListener('input', function() {
+				player.playbackRate = this.value
+			});
 
 
 			/* AJAX
 			---------------------- */
 
 			// 1. Fetch the JSON from https://jsonplaceholder.typicode.com/users
-
+			fetch('https://jsonplaceholder.typicode.com/users')
+				.then(response => response.json())
+				.then(renderPeople);
 
 			// 2. Add an `li` for each user with the layout to `.people`
+			function renderPeople(people) {
+				var $people = document.querySelector('.people');
+				people.forEach(function(person) {
+					var a = document.createElement('a');
+					a.href = 'mailto:' + person.email;
+					a.innerText = person.name;
+					
+					var strong = document.createElement('strong');
+					strong.innerText = person.company.name;
+					
+					var h4 = document.createElement('h4');
+					h4.appendChild(a);
+					h4.appendChild(document.createTextNode(' works at '));
+					h4.appendChild(strong);
 
-			/*
-			<ul class="people">
-				<li>
-					<h4><a href="mailto=[email]">[name]</a> works at <strong>[company]</strong></h4>
-				</li>
-			</ul>
-			*/
+					var li = document.createElement('li');
+					li.appendChild(h4);
+					$people.appendChild(li);
+				});
+			}
 
 		</script>
 	</body>
