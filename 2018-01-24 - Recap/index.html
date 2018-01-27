@@ -239,26 +239,27 @@
 				.then(response => response.json())
 				.then(renderPeople);
 
+			function sanitize(string) {
+				if (!window._sanitizer) window._sanitizer = document.createElement('div');
+				window._sanitizer.innerText = string;
+				return window._sanitizer.innerText;
+			}
+
 			// 2. Add an `li` for each user with the layout to `.people`
 			function renderPeople(people) {
-				var $people = document.querySelector('.people');
+				var content = '';
 				people.forEach(function(person) {
-					var a = document.createElement('a');
-					a.href = 'mailto:' + person.email;
-					a.innerText = person.name;
-					
-					var strong = document.createElement('strong');
-					strong.innerText = person.company.name;
-					
-					var h4 = document.createElement('h4');
-					h4.appendChild(a);
-					h4.appendChild(document.createTextNode(' works at '));
-					h4.appendChild(strong);
-
-					var li = document.createElement('li');
-					li.appendChild(h4);
-					$people.appendChild(li);
+					content += ([
+						'<li>',
+							'<h4>',
+								'<a href="' + sanitize(person.email) + '">' + sanitize(person.name) + '</a>',
+								' works at ',
+								'<strong>' + sanitize(person.company.name) + '</strong>',
+							'</h4>',
+						'</li>'
+					].join(''));
 				});
+				document.querySelector('.people').innerHTML = content;
 			}
 
 		</script>
