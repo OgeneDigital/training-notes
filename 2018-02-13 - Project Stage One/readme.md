@@ -15,3 +15,5 @@ The plan for this session is to get the following set up:
 - **Routes** - we'll map out all the routes required using Vue Router
 - **Hosting** on Netlify
 - **Design** - we'll break down the design and start thinking about components
+
+[Design File](https://invis.io/E6V132663764B7#/277233746_Picks)
