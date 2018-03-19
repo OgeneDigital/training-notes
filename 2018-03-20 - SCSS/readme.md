@@ -26,7 +26,7 @@ Now compare it to:
 
 ## Etymology
 
-The term __markup__ is derived from the traditional publishing practice of __"marking up"__ a [manuscript](https://en.wikipedia.org/wiki/Manuscript).
+The term _markup_ is derived from the traditional publishing practice of _"marking up"_ a [manuscript](https://en.wikipedia.org/wiki/Manuscript).
 
 ---
 
@@ -34,7 +34,7 @@ By adding headings, anchors and emphasis tags, the content takes on additional m
 
 ## Websites from paragraphs
 
-Taking this idea further, we should build websites in the same way as we 'build' paragraphs. Start with the core content, decide what additional meaning would ade the user, then __"mark up"__ that content. Break the design apart into bite-sized chunks to begin with, if it makes it easier.
+Taking this idea further, we should build websites in the same way as we 'build' paragraphs. Start with the core content, decide what additional meaning would ade the user, then _"mark up"_ that content. Break the design apart into bite-sized chunks to begin with, if it makes it easier.
 
 ## Starting point
 
@@ -67,7 +67,7 @@ Let's run through the following snippet, outlining what each bit does.
 
 `<body>` is where the user-visible content starts.
 
-## Forgiveness
+## Forgiveness
 
 HTML is a fault-tollerant language. It won't throw an error if you put a tag out of place, nor will it fail if the browser doesn't support a tag. It's the reason why the [first ever website](http://info.cern.ch/) still works today. It's pretty rare for a technology to be that resilient.
 
@@ -109,11 +109,11 @@ It has also kept an incredibly simple syntax throughout the years:
 
 ## The cascade
 
-As stylesheets can be defined in multiple places, there needs to be a way of ranking which properties are applied to each element. This is handled by *priority* and *specificity*.
+As stylesheets can be defined in multiple places, there needs to be a way of ranking which properties are applied to each element. This is handled by **priority** and **specificity**.
 
 Priority dictates which order the CSS declarations are ranked. For example, an inline style will have a higher priority than an external rule. In the middle of the ranking list is 'selector specificity'. Specificity refers to the weights of selectors. A more specific selector will be ranked above a more generic selector. For example, `h1 {}` is a very generic selector, `.class {}` is more specific and `#id` is very specific.
 
-Another great feature of CSS is *inheritance*. When you set a parent element to have `color: blue`. You don't need to specify this on each child element, it inherits it from the parent. Likewise, as media queries take effect, you don't need to redeclare styles, they will continue to inherit until a selector with a greater specificity takes over. The *rule order* also has bearing, in fact, it has a higher priority than inheritance.
+Another great feature of CSS is **inheritance**. When you set a parent element to have `color: blue`. You don't need to specify this on each child element, it inherits it from the parent. Likewise, as media queries take effect, you don't need to redeclare styles, they will continue to inherit until a selector with a greater specificity takes over. The **rule order** also has bearing, in fact, it has a higher priority than inheritance.
 
 ## How I write CSS
 
@@ -159,7 +159,7 @@ Targetting this component with `article {}` would work, but it would probably be
 
 [Naming things is hard](https://twitter.com/secretGeek/status/7269997868), specifically picking class names. Being too specific with the class name won't make any computational difference, but it will restrict how you can use the class elsewhere. I quite like the class `.preview` for components whose job it is to point at another page.
 
-With the BEM-like approach, I can add a double-hyphen *modifier* class to only change blog previews:
+With the BEM-like approach, I can add a double-hyphen **modifier** class to only change blog previews:
 
 ```html
 <article class="preview preview--blog">
@@ -178,7 +178,7 @@ Targetting the items within the `.preview` is down to preference and reusability
 </article>
 ```
 
-This is where the double-underscored *element* part of BEM comes in. Targetting this can be achived in two ways:
+This is where the double-underscored **element** part of BEM comes in. Targetting this can be achived in two ways:
 
 ```css
 .preview .preview__title {}
