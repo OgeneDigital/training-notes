@@ -1,0 +1,9 @@
+{
+  "name": "abitofeverything",
+  "version": "",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "node-sass": "^4.7.2"
+  }
+}
